@@ -20,8 +20,8 @@ function reverse(arr, n) {
   return arr;
 }
 
-// ! Recursive way: 
-// ? nothing defernce 
+// ! Recursive way:
+// ? nothing defernc
 
 let arr = [1, 2, 3, 4, 5, 6, 7, 8];
 let n = arr.length - 1;
