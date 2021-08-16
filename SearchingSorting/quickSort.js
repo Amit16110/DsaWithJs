@@ -1,46 +1,39 @@
-/**
- * *Quick Sort
- */
+// /**
+//  * *Quick Sort
+//  */
 
-// ! Swap function.
-function swap(arr, i, j) {
-  let temp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = temp;
-}
+var sortArray = function (nums) {
+  return quickSort(nums, 0, nums.length - 1);
+};
 
-// !partition function Heart of quick sort.
-function partition(arr, start, end) {
-  //  * last element consider pivot point.
-  let pivot = arr[end];
-  // console.log("🐯", pivot);
-  let i = start - 1;
-  console.log("📲", i);
-  for (let j = 0; j < end - 1; j++) {
-    if (arr[j] < pivot) {
-      console.log("🚀🚨", arr);
+let quickSort = function (nums, l, h) {
+  if (l < h) {
+    let pi = partition(nums, l, h);
+    quickSort(nums, l, pi - 1);
+    quickSort(nums, pi + 1, h);
+  }
+  return nums;
+};
+
+let partition = function (nums, l, h) {
+  let pivot = nums[h];
+  let i = l - 1;
+  for (let j = l; j <= h - 1; j++) {
+    if (nums[j] <= pivot) {
       i++;
-      console.log("🚀1", arr);
-      swap(arr, i, j);
-      console.log("🚀", arr);
+      let tmp = nums[i];
+      nums[i] = nums[j];
+      nums[j] = tmp;
     }
   }
-  swap(arr, i + 1, end);
+
+  let tmp = nums[i + 1];
+  nums[i + 1] = nums[h];
+  nums[h] = tmp;
   return i + 1;
-}
+};
 
-function quickSort(arr, start, end) {
-  if (start < end) {
-    let pi = partition(arr, start, end);
+let arr = [10, 80, 30, 90, 40, 50, 70];
 
-    // console.log("partition here 🙂", pi);
-    quickSort(arr, start, pi - 1);
-    quickSort(arr, pi + 1, end);
-  }
-}
-
-let arr = [10, 7, 8, 9, 1, 5];
-let n = arr.length;
-
-quickSort(arr, 0, n - 1);
-console.log("Sorting Error 🤞", arr);
+sortArray(arr);
+console.log(arr);
