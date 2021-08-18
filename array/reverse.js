@@ -7,10 +7,8 @@ function reverse(arr, n) {
   let end = n;
 
   while (start < end) {
-    console.log("check data here", start, end);
     let temp;
     temp = arr[start];
-    console.log(temp);
     arr[start] = arr[end];
     arr[end] = temp;
 
@@ -19,9 +17,6 @@ function reverse(arr, n) {
   }
   return arr;
 }
-
-// ! Recursive way:
-// ? nothing defernc
 
 let arr = [1, 2, 3, 4, 5, 6, 7, 8];
 let n = arr.length - 1;
